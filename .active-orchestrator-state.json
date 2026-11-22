@@ -1,6 +1,6 @@
 {
     "version":  5,
-    "step":  "visual-design",
+    "step":  "done",
     "owner":  "active-orchestrator",
     "foundation":  {
                        "version":  1,
@@ -252,17 +252,19 @@
                                                           },
                                       "find-skill":  {
                                                          "variant":  "install-selected",
-                                                         "status":  "pending",
+                                                         "status":  "done",
                                                          "requires":  [
                                                                           "kb"
                                                                       ],
                                                          "outputs":  [
-                                                                         "state.skills"
+                                                                         ".agents/skills/fastapi/SKILL.md",
+                                                                         ".agents/skills/postgresql-table-design/SKILL.md",
+                                                                         ".agents/skills/pytest-coverage/SKILL.md"
                                                                      ]
                                                      },
                                       "registry":  {
                                                        "variant":  "index",
-                                                       "status":  "pending",
+                                                       "status":  "done",
                                                        "requires":  [
                                                                         "find-skill"
                                                                     ],
@@ -272,14 +274,15 @@
                                                    },
                                       "agents":  {
                                                      "variant":  "generate",
-                                                     "status":  "pending",
+                                                     "status":  "done",
                                                      "requires":  [
                                                                       "kb",
                                                                       "roadmap",
                                                                       "registry"
                                                                   ],
                                                      "outputs":  [
-                                                                     "AGENTS.md"
+                                                                     "AGENTS.md",
+                                                                     "CLAUDE.md"
                                                                  ]
                                                  }
                                   }
