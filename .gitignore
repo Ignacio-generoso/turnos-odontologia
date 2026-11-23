@@ -1,2 +1,8 @@
-.playwright-mcp/ 
-node_modules/ 
+.playwright-mcp/
+node_modules/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+cov_annotate/
+.env
