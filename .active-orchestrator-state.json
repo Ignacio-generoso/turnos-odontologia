@@ -337,5 +337,14 @@
                                     "C-18",
                                     "C-19"
                                 ]
-                }
+                },
+    "opsx":  {
+                 "selected_change":  "crear-turno-sin-solapamientos",
+                 "roadmap_item":  "C-06",
+                 "archived_path":  "openspec/changes/archive/2026-11-23-crear-turno-sin-solapamientos",
+                 "active_spec_path":  "openspec/specs/turnos-agenda/spec.md",
+                 "status":  "archived",
+                 "completed_at":  "2026-11-23",
+                 "completed_by":  "Tomás Basabe <tomasbasasbe.utn@gmail.com>"
+             }
 }
