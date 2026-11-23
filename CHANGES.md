@@ -237,7 +237,7 @@ Paso │ Agente A (Backend Core)        │ Agente B (Backend Aux)      │ Agen
 ---
 
 ### [C-06] `turnos-agenda`
-- **Estado**: `[ ]` pendiente
+- **Estado**: `[x]` slice nuclear implementado y archivado (`openspec/changes/archive/2026-11-23-crear-turno-sin-solapamientos/`) — *Nota: completada la funcionalidad atómica `POST /api/v1/turnos` y prevención de solapamientos (`RN-AG-01`..`05`, `RN-AU-01`, `RN-AU-05`) con DDL `btree_gist` y 9 tests en verde (100 % cobertura). Restan `GET /turnos`, `GET /disponibilidad`, `PATCH /reprogramar` y `PATCH /estado` en iteraciones posteriores.*
 - **Scope**: Gestión interna de turnos con prevención transaccional de solapamientos por profesional y sillón/box (`US-003`, `US-004`, `US-005`)
   - Modelo `Turno` con `estado` (`reservado`, `confirmado`, `en_atencion`, `atendido`, `ausente`, `cancelado`), `origen` (`interno`, `publico`), `token_publico_hash`, `profesional_id`, `sillon_id`, `prestacion_id`, `paciente_id`
   - Migración `005_turnos_agenda.py`: tabla `turnos` con `CHECK (fin > inicio)`, `CHECK (duracion_minutos > 0)`, índice `(consultorio_id, inicio, estado)` y **exclusion constraints `EXCLUDE USING gist`** (`WHERE (estado <> 'cancelado')`) sobre `(consultorio_id, profesional_id, tstzrange(inicio, fin, '[)'))` (`RN-AG-03`) y `(consultorio_id, sillon_id, tstzrange(inicio, fin, '[)'))` (`RN-AG-04`)
