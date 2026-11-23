@@ -1,0 +1,96 @@
+{
+  "version": "0.1.0",
+  "exported_at": "2026-11-23 14:19:08",
+  "sessions": [
+    {
+      "id": "manual-save-turnos-odontologia",
+      "project": "turnos-odontologia",
+      "directory": "C:\\Users\\Hp\\Desktop\\GlobalDS\\turnos-odontologia",
+      "started_at": "2026-11-23 14:18:53"
+    }
+  ],
+  "observations": [
+    {
+      "id": 1,
+      "sync_id": "obs-4ec24240d8962883",
+      "session_id": "manual-save-turnos-odontologia",
+      "type": "discovery",
+      "title": "Discovery: hallazgos y MVP Turnos Odontologia AR",
+      "content": "Se relevaron 24 sistemas odontologicos (19 con evidencia + 5 SPA). Se corrigio en verificacion manual el pricing publico de Dentia (20k/30k/40k ARS) y WhatsApp en 1 clic de Dentatools. MVP v1 prioriza agenda multi-profesional sin solapamientos, reserva online, WhatsApp asistido wa.me (DD-02), pagos manuales (DD-03), aislamiento clinico odontologo (DD-06) y residencia en Argentina (DD-04).",
+      "project": "turnos-odontologia",
+      "scope": "project",
+      "topic_key": "discovery-mvp",
+      "revision_count": 1,
+      "duplicate_count": 1,
+      "last_seen_at": "2026-11-23 14:18:53",
+      "created_at": "2026-11-23 14:18:53",
+      "updated_at": "2026-11-23 14:18:53"
+    },
+    {
+      "id": 2,
+      "sync_id": "obs-0718505be656fae7",
+      "session_id": "manual-save-turnos-odontologia",
+      "type": "architecture",
+      "title": "Arquitectura y DDL PostgreSQL btree_gist",
+      "content": "Stack elegido (DD-04): FastAPI + Pydantic v2 + PostgreSQL 15+ + React/TypeScript PWA. Los turnos usan TIMESTAMPTZ y NUMERIC(12,2). La prevencion de solapamientos se garantiza con dos constraints EXCLUDE USING gist (btree_gist) sobre tstzrange(inicio, fin, '[)') por profesional_id y sillon_id con WHERE (estado \u003c\u003e 'cancelado').",
+      "project": "turnos-odontologia",
+      "scope": "project",
+      "topic_key": "arquitectura-btree-gist",
+      "revision_count": 1,
+      "duplicate_count": 1,
+      "last_seen_at": "2026-11-23 14:18:53",
+      "created_at": "2026-11-23 14:18:53",
+      "updated_at": "2026-11-23 14:18:53"
+    },
+    {
+      "id": 3,
+      "sync_id": "obs-ae121afaf54046f7",
+      "session_id": "manual-save-turnos-odontologia",
+      "type": "convention",
+      "title": "Convenciones y reglas duras del proyecto",
+      "content": "Reglas duras en AGENTS.md/CLAUDE.md: (1) Cero datos reales de pacientes en codigo, seeds o tests; (2) Aislamiento por consultorio_id (RN-AU-01); (3) Historia clinica y odontograma exclusivos para rol odontologo (403 incluso para dueno sin rol clinico, RN-AU-02); (4) FastAPI con Annotated[..., Depends(...)] y return types explicitos; (5) No improvisar fuera del spec OpenSpec en Apply.",
+      "project": "turnos-odontologia",
+      "scope": "project",
+      "topic_key": "convenciones-reglas",
+      "revision_count": 1,
+      "duplicate_count": 1,
+      "last_seen_at": "2026-11-23 14:18:54",
+      "created_at": "2026-11-23 14:18:54",
+      "updated_at": "2026-11-23 14:18:54"
+    },
+    {
+      "id": 4,
+      "sync_id": "obs-9bcd5a49c841e3b3",
+      "session_id": "manual-save-turnos-odontologia",
+      "type": "decision",
+      "title": "Ajuste en Propose del change C-06 crear-turno-sin-solapamientos",
+      "content": "Protocolo de inspeccion en Propose -\u003e Ajustar: se detectaron 3 errores en el borrador inicial: (1) incluia cobro automatico con Mercado Pago que estaba diferido a v1.1 (DD-03/IN-01); (2) usaba intervalo cerrado [inicio, fin] rechazando turnos contiguos exactos (10:40 tras 10:00-10:40); (3) faltaban escenarios de bloqueos y aislamiento multi-consultorio. Se corrigio a intervalo semiabierto [inicio, fin) excluyendo cancelados y se ampliaron a 7 escenarios verificables.",
+      "project": "turnos-odontologia",
+      "scope": "project",
+      "topic_key": "opsx-ajuste-propose",
+      "revision_count": 1,
+      "duplicate_count": 1,
+      "last_seen_at": "2026-11-23 14:18:54",
+      "review_after": "2027-05-23 14:18:54",
+      "created_at": "2026-11-23 14:18:54",
+      "updated_at": "2026-11-23 14:18:54"
+    },
+    {
+      "id": 5,
+      "sync_id": "obs-22f3ffd723eafd0b",
+      "session_id": "manual-save-turnos-odontologia",
+      "type": "pattern",
+      "title": "Cierre OPSX: crear-turno-sin-solapamientos archivado y verificado",
+      "content": "Change C-06 archivado en openspec/changes/archive/2026-11-23-crear-turno-sin-solapamientos/ y spec promovida a openspec/specs/turnos-agenda/spec.md. Implementacion en src/domain/models.py, src/domain/services.py, src/api/app.py y src/infrastructure/sql/005_turnos_agenda_btree_gist.sql. Suite pytest: 9/9 passed con 100% cobertura (329 stmts).",
+      "project": "turnos-odontologia",
+      "scope": "project",
+      "topic_key": "opsx-cierre-c06",
+      "revision_count": 1,
+      "duplicate_count": 1,
+      "last_seen_at": "2026-11-23 14:18:54",
+      "created_at": "2026-11-23 14:18:54",
+      "updated_at": "2026-11-23 14:18:54"
+    }
+  ],
+  "prompts": null
+}
