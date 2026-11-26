@@ -16,16 +16,20 @@ turnos-odontologia/
 │   └── skill-registry.md               # Registro compacto de skills (FastAPI, PostgreSQL, Pytest)
 ├── .engram/                            # Chunks exportados de memoria persistente Engram
 ├── docs/
+│   ├── etapa-0/                        # Capturas de evidencia de Etapa 0 (instalador Full y harnesses)
 │   ├── discovery/                      # Investigación de mercado, fuentes y verificación
+│   │   ├── informe-discovery.md
+│   │   ├── informe-discovery.pdf
 │   │   ├── discovery.md
 │   │   ├── market-research.md
 │   │   └── sources/
 │   ├── engram/                         # Evidencia y snapshot de memoria persistente (Etapa 7)
 │   │   ├── engram-export.json
 │   │   └── etapa-7-memoria-engram.md
-│   └── opsx/                           # Trazabilidad Explore y reporte de Verify
-│       ├── explore-crear-turno-sin-solapamientos.md
-│       └── verify-report.md
+│   ├── opsx/                           # Trazabilidad Explore y reporte de Verify
+│   │   ├── explore-crear-turno-sin-solapamientos.md
+│   │   └── verify-report.md
+│   └── Reflexiones.pdf                 # Reflexión escrita grupal (Entregable 4)
 ├── knowledge-base/                     # Los 10 documentos canónicos de dominio + README
 ├── openspec/
 │   ├── config.yaml
@@ -75,16 +79,20 @@ cd turnos-odontologia
 
 # 2. (Recomendado) Crear y activar entorno virtual
 python -m venv .venv
-# En Windows PowerShell:
+# En Windows PowerShell (si ExecutionPolicy bloquea Activate.ps1, usar directamente .\.venv\Scripts\python.exe):
 .venv\Scripts\Activate.ps1
+# En Windows CMD:
+# .venv\Scripts\activate.bat
 # En Linux/macOS:
 # source .venv/bin/activate
 
-# 3. Instalar dependencias del proyecto y testing
+# 3. Instalar dependencias del proyecto y testing (incluye tzdata para zonas horarias IANA en Windows)
 python -m pip install -r requirements.txt
+# (Alternativa en Windows sin activar script): .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 
 # 4. Ejecutar toda la suite de tests automatizados
 python -m pytest -v
+# (Alternativa en Windows sin activar script): .\.venv\Scripts\python.exe -m pytest -v
 
 # 5. (Opcional) Ejecutar con reporte de cobertura línea por línea
 python -m pytest -v --cov=src --cov-report=term-missing
